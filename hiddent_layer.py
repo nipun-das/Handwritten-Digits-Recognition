@@ -36,13 +36,19 @@ print(X_train_flattened.shape)
 # a = np.array([1,2,3,4,5,6])
 # print(a.shape)
 
-model = keras.Sequential([keras.layers.Dense(10, input_shape=(784,), activation='sigmoid')])
+# model = keras.Sequential([keras.layers.Dense(10, input_shape=(784,), activation='sigmoid')])
+#
+# model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+#
+# model.fit(X_train_flattened, y_train, epochs=5)
+
+model = keras.Sequential([keras.layers.Dense(100, input_shape=(784,), activation='relu'),
+                          keras.layers.Dense(10, activation='sigmoid')
+                          ])
 
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 model.fit(X_train_flattened, y_train, epochs=5)
-
-
 
 print("Evaluate : ")
 model.evaluate(X_test_flattened, y_test)
